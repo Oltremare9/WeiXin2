@@ -81,7 +81,7 @@
   </view>
   <!-- 第五部分：发布按钮 -->
   <view>
-    <button bindTap="gotoPage" class="issue" form-type="submit" style="opacity: {{opacity}};color: white; background-color: #ff8719;">发布</button>
+    <button bindTap="gotoPage" class="issue" form-type="submit" style="opacity: {{opacity}};color: white; background-color: #f7ab3e;">发布</button>
   </view>
 </form>
 

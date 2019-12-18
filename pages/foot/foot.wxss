@@ -49,7 +49,7 @@
 /* 分割线样式 */
 
 .line {
-  width: 90%;
+  width: 100%;
   margin-left: 5%;
   background-color: #f7ab3e;
   height: 0.1em;
@@ -136,6 +136,7 @@ swiper-item {
   flex-direction: column;
   justify-content: center;
   align-items: center;
+  width: 100%;
 }
 .project{
   margin-top: 15rpx;
