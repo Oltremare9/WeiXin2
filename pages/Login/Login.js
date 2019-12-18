@@ -16,17 +16,20 @@ Page({
     */
     var that = this
     var formData = e.detail.value;//获取表单中的所有数据
+    var name=this.data.name
+    var studentid=this.data.studentid
     wx.request({
+      
       url: 'http://118.178.18.181:58015/person/login',
       data: {
-        formData
+        name,studentid
       },
       method: 'POST',
       header: {
         "Content-Type": "application/x-www-form-urlencoded"
       },
       success: function (res) {
-        console.log(res.data)
+        console.log("返回发送成功的数据:"+res.data)
         if(res.data.length>0)
         wx.reLaunch({
           url: '../index/index'
