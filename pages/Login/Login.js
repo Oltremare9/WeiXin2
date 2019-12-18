@@ -1,18 +1,68 @@
 // pages/Login/Login.js
 Page({
+  data: {
+    name:'q',
+    studentid:'q'
+  },
 
+
+
+
+  formSubmit: function (e) {
+    wx.reLaunch({
+      url: '../index/index'
+    })
+    wx.request({
+      url: 'http://118.178.18.181:58015/person/login',
+      data: {
+        name: JSON.stringify(this.data.name),
+        studentid: JSON.stringify(this.data.studentid),
+      },
+      method: 'POST',
+      header: {
+        "Content-Type": "application/x-www-form-urlencoded"
+      },
+      success: function (res) {
+        console.log(res.data)
+        //if(res.data.length>0)
+          wx.redirectTo({url:'../index/index'})
+      },
+      fail: function (res) {
+        wx.showModal({
+          title: '提示',
+          content: res.data,
+        })
+        //if(res.data.length>0)
+        wx.redirectTo({ url: '../index/index' })
+      }
+    })
+  },
+  formReset: function () {
+    console.log('form发生了reset事件')
+  },
+  phoneInput:function(e){
+    console.log('用户名输入')
+    console.log(e.detail.value)
+    this.setData({
+      name: e.detail.value
+    })
+  },
+  passwordInput:function(e){
+    console.log('密码输入')
+    console.log(e.detail.value)
+    this.setData({
+      studentid: e.detail.value
+    })
+  },
   /**
    * 页面的初始数据
    */
-  data: {
-
-  },
+  
 
   /**
    * 生命周期函数--监听页面加载
    */
   onLoad: function (options) {
-
   },
 
   /**

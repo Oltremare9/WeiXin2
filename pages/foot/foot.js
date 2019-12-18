@@ -6,10 +6,6 @@ Page({
    */
   
   data: {
-    activities: 
-    [{ url: '../image/basketball.png', name: '篮球' }, 
-    { url: '../image/swim.png', name: '游泳' }, { url: '../image/exercise.png', name: '健身' }, 
-    { url: '../image/more.png', name: '更多' }],
     projects: 
     [{ url: '', name: '一起流汗', tag: '健身 社交 室内', location: '南京大学体育馆', time: '2019.12.12' ,state:
     '已完成'},
@@ -37,6 +33,21 @@ Page({
    * 生命周期函数--监听页面加载
    */
   onLoad: function (options) {
+    wx.request({
+      url: 'http://118.178.18.181:58015/activity/findInfo',
+      method: 'POST',
+      headerL: {
+        "Content-Type": "application/x-www-form-urlencoded"
+      },
+      success: function (res) {
+        for (var index in res.data) {
+          var s = "projects[" + index + "]"
+          that.setData({
+            [s]: res.data[index]
+          })
+        }
+      }
+    })
     wx.setNavigationBarTitle({
       title: '我的足迹',
     })

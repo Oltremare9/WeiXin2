@@ -27,9 +27,9 @@ Page({
     var that = this
     wx.request({
       url: 'http://118.178.18.181:58015/activity/findInfo',
-      method: 'GET',
+      method: 'POST',
       headerL: {
-        'content-type': 'application/json'
+        "Content-Type": "application/x-www-form-urlencoded"
       },
       success: function (res) {
         for (var index in res.data) {
