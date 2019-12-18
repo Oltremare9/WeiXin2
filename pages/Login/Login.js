@@ -30,10 +30,13 @@ Page({
       },
       success: function (res) {
         console.log("返回发送成功的数据:"+res.data)
-        if(res.data.length>0)
+        if(res.data.length>0){
+          var app=getApp()
+          app.name=res.data
         wx.reLaunch({
           url: '../index/index'
         })
+        }
       },
       fail: function (res) {
         wx.showModal({

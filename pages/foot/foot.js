@@ -33,6 +33,9 @@ Page({
    * 生命周期函数--监听页面加载
    */
   onLoad: function (options) {
+    var app=getApp()
+    var name=app.name
+    console.log("当前用户名为:" + name)
     var that = this
     wx.request({
       url: 'http://118.178.18.181:58015/activity/findInfo',
