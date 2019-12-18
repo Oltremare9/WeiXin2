@@ -11,7 +11,7 @@
         <image class="nameImage" src="/images/name.png">
         </image>
         <label class="loginLab">账号</label>
-        <input class="inputText" placeholder="请输入账号" bindinput="phoneInput" name="xingming"/>
+        <input class="inputText" placeholder="请输入账号" bindinput="phoneInput" name="name"/>
       </view>
       <view class="line"></view>
 

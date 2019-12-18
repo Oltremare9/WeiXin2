@@ -9,14 +9,17 @@ Page({
 
 
   formSubmit: function (e) {
+    /*
     wx.reLaunch({
       url: '../index/index'
     })
+    */
+    var that = this
+    var formData = e.detail.value;//获取表单中的所有数据
     wx.request({
       url: 'http://118.178.18.181:58015/person/login',
       data: {
-        name: JSON.stringify(this.data.name),
-        studentid: JSON.stringify(this.data.studentid),
+        formData
       },
       method: 'POST',
       header: {
@@ -24,16 +27,17 @@ Page({
       },
       success: function (res) {
         console.log(res.data)
-        //if(res.data.length>0)
-          wx.redirectTo({url:'../index/index'})
+        if(res.data.length>0)
+        wx.reLaunch({
+          url: '../index/index'
+        })
       },
       fail: function (res) {
         wx.showModal({
           title: '提示',
           content: res.data,
         })
-        //if(res.data.length>0)
-        wx.redirectTo({ url: '../index/index' })
+        
       }
     })
   },
