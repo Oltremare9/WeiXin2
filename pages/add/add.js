@@ -1,4 +1,5 @@
 // pages/issue/issue.js
+
 Page({
 
   /**
@@ -13,8 +14,11 @@ Page({
       index2:0,
       index3:0,
       date:'2019-12-13',
-      time:'05:00',     
+      time:'05:00',
+      name:'',
+      location:''     
   },
+
   bindNumChange:function(e){
     console.log('人数选择改变')
     console.log(e.detail.value)
@@ -22,11 +26,29 @@ Page({
       index1:e.detail.value
     })
   },
+
   bindTypeChange: function (e) {
     console.log('活动类型选择改变')
+    console.log(this.data.type[e.detail.value])
+    this.setData({
+      index2: this.data.type[e.detail.value]
+    })
+    
+  },
+
+  bindNameChange:function(e){
+    console.log('活动名发生改变')
     console.log(e.detail.value)
     this.setData({
-      index2: e.detail.value
+      name: e.detail.value
+    })
+  },
+
+  bindPlaceChange:function(e){
+    console.log('活动地点发生改变')
+    console.log(e.detail.value)
+    this.setData({
+      location: e.detail.value
     })
   },
 
@@ -37,6 +59,7 @@ Page({
       date:e.detail.value
     })
   },
+
   bindTimeChange: function (e) {
     console.log('时间发生改变')
     console.log(e.detail.value)
@@ -44,6 +67,7 @@ Page({
       time: e.detail.value
     })
   },
+
   bindLongChange: function (e) {
     console.log('时长发生改变')
     console.log(e.detail.value)
@@ -51,24 +75,27 @@ Page({
       index3: e.detail.value
     })
   },
-  // 点击发布按钮实现页面跳转 wx.navigateTo()不能调回tabbar页面
-  gotoPage:function(){
-    wx.navigateBack({
-      // 返回上一级页面
-       delta:1
-    })
-  },
+
   // 向服务器提交表单数据
-  formsubmit:function(e){
+  formSubmit: function (e) {
+    
     var that=this
-    var formData=e.detail.value;//获取表单中的所有数据
-    wx:wx.request({
-      url: '',//服务器接口地址
-      data: formData,//服务器需要的参数 
-      header: { 'Content-Type': 'application/json' }, //设置请求的 header，GET请求可以不填 
-      method: 'GET',//声明GET请求
-      dataType: 'json',
-      responseType: 'text',
+    var organizer = wx.getStorageSync('name')
+    var start_time=this.data.date
+    var type = this.data.index2
+    var size = this.data.index1
+    var name=this.data.name
+    var remark = this.data.time + ',活动时长' + this.data.index3+'小时'
+    console.log(name, location, start_time, type, size, remark, organizer)
+    wx.request({
+      url: '',
+      data: {
+        name, location,start_time,type,size,remark,organizer
+      },
+      method: 'POST',
+      header: {
+        "Content-Type": "application/x-www-form-urlencoded"
+      },
       success: function(res) {
         console.log("返回发送成功的数据:" + res.data) 
       },

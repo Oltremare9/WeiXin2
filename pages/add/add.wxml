@@ -1,12 +1,12 @@
 <!--pages/issue/issue.wxml-->
-<form bindsubmit="formSubmit">
+<form bindsubmit="formSubmit" bindreset="formReset">
 <!-- 第一部分：输入活动名称和地点 -->
   <view class="input-section">
     <view class="info">
       <text>活动名称</text>
     </view>   
     <view>
-      <input class="input-name" placeholder=" 单行输入" type="text"/>
+      <input class="input-name" bindchange="bindNameChange" placeholder=" 单行输入" type="text"/>
     </view>   
   </view>
   <view class="input-section">
@@ -14,7 +14,7 @@
       <text>活动地点</text>
     </view>   
     <view>
-      <input class="input-name" placeholder=" 单行输入" type="text"/>
+      <input class="input-name" bindchange="bindPlaceChange" placeholder=" 单行输入" type="text"/>
     </view>   
   </view>
   <!-- 第二部分：选择人数和活动类型 -->
@@ -81,7 +81,7 @@
   </view>
   <!-- 第五部分：发布按钮 -->
   <view>
-    <button bindTap="gotoPage" class="issue" form-type="submit" style="opacity: {{opacity}};color: white; background-color: #f7ab3e;">发布</button>
+    <label  class="loginBtn" bindtap="formSubmit" disabled="false">提交</label>
   </view>
 </form>
 
