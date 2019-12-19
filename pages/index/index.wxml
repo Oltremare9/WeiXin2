@@ -27,7 +27,7 @@
           <image src="../image/cheese.png"></image>
         </view>
         <view>
-          <text style="padding-top:0">{{projects[index].eventName}}\n</text>
+          <text style="padding-top:0">{{projects[index].name}}\n</text>
           <text style="font-size:25rpx">{{projects[index].type}}\n</text>
           <text style="font-size:25rpx">地点:{{projects[index].location}}\n</text>
           <text style="font-size:20rpx;">活动时间:{{projects[index].startTime}}{{projects[index].remark}}</text>
