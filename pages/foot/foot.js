@@ -4,17 +4,9 @@ Page({
   /**
    * 页面的初始数据
    */
-  
+
   data: {
-    projects: 
-    [{ url: '', name: '一起流汗', tag: '健身 社交 室内', location: '南京大学体育馆', time: '2019.12.12' ,state:
-    '已完成'},
-        {
-          url: '', name: '一起流汗', tag: '健身 社交 室内', location: '南京大学体育馆', time: '2019.12.12', state:
-            '已完成'},
-        {
-          url: '', name: '一起流汗', tag: '健身 社交 室内', location: '南京大学体育馆', time: '2019.12.12', state:
-            '已完成'}],
+    projects: [],
     imgUrls: ['../image/1.jpg', '../image/2.jpg', '../image/3.jpg'],
     indicatorDots: true,
     autoplay: true,
@@ -22,7 +14,7 @@ Page({
     duration: 1000,
     circular: true
   },
-  toConcrete: function (e) {
+  toConcrete: function(e) {
     var id = e.target.id
     console.log(id);
     wx.navigateTo({
@@ -32,22 +24,20 @@ Page({
   /**
    * 生命周期函数--监听页面加载
    */
-  onLoad: function (options) {
-    var app=getApp()
-    var name=app.name
+  onLoad: function(options) {
+    var name = wx.getStorageSync('name')
+    var app = getApp()
+    var name = app.name
     console.log("当前用户名为:" + name)
     var that = this
     wx.request({
-      url: 'http://118.178.18.181:58015/activity/findInfo',
-      method: 'POST',
-      headerL: {
-        "Content-Type": "application/x-www-form-urlencoded"
-      },
-      success: function (res) {
-        for (var index in res.data) {
+      url: 'http://118.178.18.181:58015/activity/findInfoByName/' + name,
+      method: 'GET',
+      success: function(res) {
+        for (var index in res.data.list) {
           var s = "projects[" + index + "]"
           that.setData({
-            [s]: res.data[index]
+            [s]: res.data.list[index]
           })
         }
       }
@@ -61,49 +51,49 @@ Page({
   /**
    * 生命周期函数--监听页面初次渲染完成
    */
-  onReady: function () {
+  onReady: function() {
 
   },
 
   /**
    * 生命周期函数--监听页面显示
    */
-  onShow: function () {
+  onShow: function() {
 
   },
 
   /**
    * 生命周期函数--监听页面隐藏
    */
-  onHide: function () {
+  onHide: function() {
 
   },
 
   /**
    * 生命周期函数--监听页面卸载
    */
-  onUnload: function () {
+  onUnload: function() {
 
   },
 
   /**
    * 页面相关事件处理函数--监听用户下拉动作
    */
-  onPullDownRefresh: function () {
+  onPullDownRefresh: function() {
 
   },
 
   /**
    * 页面上拉触底事件的处理函数
    */
-  onReachBottom: function () {
+  onReachBottom: function() {
 
   },
 
   /**
    * 用户点击右上角分享
    */
-  onShareAppMessage: function () {
+  onShareAppMessage: function() {
 
   }
 })

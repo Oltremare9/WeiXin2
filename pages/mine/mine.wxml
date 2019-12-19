@@ -4,14 +4,13 @@
   <view class="information" style="box-shadow:0px 2px 3px 1px #d9d7d4;">
     <image class="head" src="/images/head.jpeg"></image>
     <view class="name-section">
-      <view class="nickname">oltremare</view>
-      <view class="name">实名：王二狗</view>
+      <view class="nickname">{{name}}</view>
     </view>
   </view>
   <!-- 第二部分：参与活动次数 -->
   <view class="total" style="box-shadow:0px 2px 3px 1px #d9d7d4;">
     <view class="text1">参与活动次数</view>
-    <view class="text2">6</view>
+    <view class="text2">{{times}}</view>
     <view class="text3">多多益善哦！</view>
   </view>
   <!-- 第三部分 --> 

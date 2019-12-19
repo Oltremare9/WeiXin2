@@ -1,18 +1,31 @@
 // pages/my/my.js
 Page({
-
   /**
    * 页面的初始数据
    */
   data: {
-
+    name:'未登录',
+    times:0
   },
 
   /**
    * 生命周期函数--监听页面加载
    */
   onLoad: function (options) {
-
+    var that=this
+    var nickName=wx.getStorageSync('name')
+    that.setData({
+      name:nickName
+    })
+    wx.request({
+      url: 'http://118.178.18.181:58015/activity/findInfoByName/'+nickName,
+      method: 'GET',
+      success: function (res) {
+        that.setData({
+          times:res.data.size
+        })
+      }
+    })
   },
 
   /**

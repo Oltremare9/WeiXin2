@@ -52,6 +52,6 @@
   </view>
 
   <view class="join">
-    <button>立即加入</button>
+    <button bindtap="join">立即加入</button>
   </view>
 </view>

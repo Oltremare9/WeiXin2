@@ -5,6 +5,7 @@ Page({
    * 页面的初始数据
    */
   data: {
+    eid:0,
     imgUrls: ['../image/1.jpg', '../image/2.jpg', '../image/3.jpg'],
     indicatorDots: true,
     autoplay: true,
@@ -33,17 +34,35 @@ Page({
     }, {
       url: '../image/basketball.png',
       id: ''
-    },{url:'../image/add2.png'}]
+    }, {
+      url: '../image/add2.png'
+    }]
   },
 
+
+  join:function(){
+    // var pid=wx.getStorageSync(id)
+    // var eid=this.data.eid
+    // wx.request({
+    //   url: 'http://118.178.18.181:58015/activity/insertActivity/'+pid+eid,
+    //   method:'GET',
+    //   success: function (res) {
+    //    console.log("加入成功")
+    //   }
+    // })
+  },
   /**
    * 生命周期函数--监听页面加载
    */
   onLoad: function(options) {
+    console.log(options)
+    var that=this
     wx.setNavigationBarTitle({
       title: '活动详情',
     })
-    console.log(options)
+    that.setData({
+      eid:options.eid
+    })
   },
 
   /**

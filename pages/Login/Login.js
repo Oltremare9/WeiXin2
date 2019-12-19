@@ -30,6 +30,8 @@ Page({
       },
       success: function (res) {
         console.log("返回发送成功的数据:"+res.data)
+        wx.setStorageSync('name', res.data.name)
+        wx.setStorageSync('pid', res.data.id)
         if(res.data.length>0){
           var app=getApp()
           app.name=res.data
