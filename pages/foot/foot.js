@@ -25,23 +25,6 @@ Page({
    * 生命周期函数--监听页面加载
    */
   onLoad: function(options) {
-    var name = wx.getStorageSync('name')
-    var app = getApp()
-    var name = app.name
-    console.log("当前用户名为:" + name)
-    var that = this
-    wx.request({
-      url: 'http://118.178.18.181:58015/activity/findInfoByName/' + name,
-      method: 'GET',
-      success: function(res) {
-        for (var index in res.data.list) {
-          var s = "projects[" + index + "]"
-          that.setData({
-            [s]: res.data.list[index]
-          })
-        }
-      }
-    })
     wx.setNavigationBarTitle({
       title: '我的足迹',
     })
@@ -59,7 +42,20 @@ Page({
    * 生命周期函数--监听页面显示
    */
   onShow: function() {
-
+    var name = wx.getStorageSync('name')
+    var that = this
+    wx.request({
+      url: 'http://118.178.18.181:58015/activity/findInfoByName/' + name,
+      method: 'GET',
+      success: function (res) {
+        for (var index in res.data.list) {
+          var s = "projects[" + index + "]"
+          that.setData({
+            [s]: res.data.list[index]
+          })
+        }
+      }
+    })
   },
 
   /**

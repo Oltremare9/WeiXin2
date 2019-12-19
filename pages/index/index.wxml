@@ -16,7 +16,7 @@
   </view>
   <view class="projects_container">
     <block wx:for="{{projects}}" wx:key="">
-      <view class="project" bindtap="toConcrete" id="{{index}}">
+      <view class="project" bindtap="toConcrete" data-id="{{item.eid}}">
         <view wx:if="{{item.type=='篮球'}}">
           <image src="../image/basketball.png"></image>
         </view>

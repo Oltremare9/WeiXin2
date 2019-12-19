@@ -12,20 +12,7 @@ Page({
    * 生命周期函数--监听页面加载
    */
   onLoad: function (options) {
-    var that=this
-    var nickName=wx.getStorageSync('name')
-    that.setData({
-      name:nickName
-    })
-    wx.request({
-      url: 'http://118.178.18.181:58015/activity/findInfoByName/'+nickName,
-      method: 'GET',
-      success: function (res) {
-        that.setData({
-          times:res.data.size
-        })
-      }
-    })
+    
   },
 
   /**
@@ -39,7 +26,20 @@ Page({
    * 生命周期函数--监听页面显示
    */
   onShow: function () {
-
+    var that = this
+    var nickName = wx.getStorageSync('name')
+    that.setData({
+      name: nickName
+    })
+    wx.request({
+      url: 'http://118.178.18.181:58015/activity/findInfoByName/' + nickName,
+      method: 'GET',
+      success: function (res) {
+        that.setData({
+          times: res.data.size
+        })
+      }
+    })
   },
 
   /**

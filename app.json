@@ -1,15 +1,13 @@
 {
   "pages": [
-    "pages/index/index",
     "pages/Login/Login",
-    
+    "pages/index/index",
     "pages/foot/foot",
     "pages/ConcreteProject/ConcreteProject",
     "pages/ConcreteActivity/ConcreteActivity",
     "pages/add/add",
     "pages/mine/mine",
     "pages/logs/logs"
-    
   ],
   "window": {
     "backgroundTextStyle": "light",

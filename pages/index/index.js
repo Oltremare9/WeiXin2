@@ -31,14 +31,9 @@ Page({
   },
 
   toConcrete: function(e) {
-    console.log(e.target.id)
-    console.log(this.data.projects)
-    // nId=e.target.id
-    // console.log(nId)
-    // var nEid=this.data.projects[id].eid
-
+    var eid = e.currentTarget.dataset.id
     wx.navigateTo({
-      url: '../ConcreteProject/ConcreteProject',
+      url: '../ConcreteProject/ConcreteProject?eid='+eid,
     })
   },
 
@@ -46,7 +41,7 @@ Page({
    * 生命周期函数--监听页面加载
    */
   onLoad: function(options) {
-    var that = this
+    
     wx.setNavigationBarTitle({
       title: '线下活动组织',
     })
@@ -63,7 +58,7 @@ Page({
    * 生命周期函数--监听页面显示
    */
   onShow: function() {
-    var that=this
+    var that = this
     wx.request({
       url: 'http://118.178.18.181:58015/activity/findInfo',
       method: 'GET',

@@ -1,65 +1,64 @@
 // pages/Login/Login.js
 Page({
   data: {
-    name:'q',
-    studentid:'q'
+    name: 'q',
+    studentid: 'q'
   },
 
 
 
 
-  formSubmit: function (e) {
+  formSubmit: function(e) {
     /*
     wx.reLaunch({
       url: '../index/index'
     })
     */
     var that = this
-    var formData = e.detail.value;//获取表单中的所有数据
-    var name=this.data.name
-    var studentid=this.data.studentid
+    var formData = e.detail.value; //获取表单中的所有数据
+    var name = this.data.name
+    var studentid = this.data.studentid
     wx.request({
-      
+
       url: 'http://118.178.18.181:58015/person/login',
       data: {
-        name,studentid
+        name,
+        studentid
       },
       method: 'POST',
       header: {
         "Content-Type": "application/x-www-form-urlencoded"
       },
-      success: function (res) {
-        console.log("返回发送成功的数据:"+res.data)
+      success: function(res) {
+        console.log("返回发送成功的数据:" + res.data.name)
         wx.setStorageSync('name', res.data.name)
         wx.setStorageSync('pid', res.data.id)
-        if(res.data.length>0){
-          var app=getApp()
-          app.name=res.data
-        wx.reLaunch({
-          url: '../index/index'
-        })
+        if (res.data.name.length > 0) {
+          wx.reLaunch({
+            url: '../index/index'
+          })
         }
       },
-      fail: function (res) {
+      fail: function(res) {
         wx.showModal({
           title: '提示',
           content: res.data,
         })
-        
+
       }
     })
   },
-  formReset: function () {
+  formReset: function() {
     console.log('form发生了reset事件')
   },
-  phoneInput:function(e){
+  phoneInput: function(e) {
     console.log('用户名输入')
     console.log(e.detail.value)
     this.setData({
       name: e.detail.value
     })
   },
-  passwordInput:function(e){
+  passwordInput: function(e) {
     console.log('密码输入')
     console.log(e.detail.value)
     this.setData({
@@ -69,60 +68,59 @@ Page({
   /**
    * 页面的初始数据
    */
-  
+
 
   /**
    * 生命周期函数--监听页面加载
    */
-  onLoad: function (options) {
-  },
+  onLoad: function(options) {},
 
   /**
    * 生命周期函数--监听页面初次渲染完成
    */
-  onReady: function () {
+  onReady: function() {
 
   },
 
   /**
    * 生命周期函数--监听页面显示
    */
-  onShow: function () {
+  onShow: function() {
 
   },
 
   /**
    * 生命周期函数--监听页面隐藏
    */
-  onHide: function () {
+  onHide: function() {
 
   },
 
   /**
    * 生命周期函数--监听页面卸载
    */
-  onUnload: function () {
+  onUnload: function() {
 
   },
 
   /**
    * 页面相关事件处理函数--监听用户下拉动作
    */
-  onPullDownRefresh: function () {
+  onPullDownRefresh: function() {
 
   },
 
   /**
    * 页面上拉触底事件的处理函数
    */
-  onReachBottom: function () {
+  onReachBottom: function() {
 
   },
 
   /**
    * 用户点击右上角分享
    */
-  onShareAppMessage: function () {
+  onShareAppMessage: function() {
 
   }
 })
