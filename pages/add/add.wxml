@@ -81,7 +81,7 @@
   </view>
   <!-- 第五部分：发布按钮 -->
   <view>
-    <label  class="loginBtn" bindtap="formSubmit" disabled="false">提交</label>
+    <button bindtap="formSubmit">提交</button>
   </view>
 </form>
 

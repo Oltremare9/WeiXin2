@@ -66,6 +66,7 @@
 }
 
 .input{
+  height: 100%;
   color: olive;
   padding-left: 30rpx;
   margin-top: 6rpx;
@@ -82,5 +83,9 @@
 .loginBtn {
   width: 80%;
   margin-top: 35px;
+}
+button{
+  margin-top: 15rpx;
+  background-color: #f7ab3e;
 }
 
