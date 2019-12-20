@@ -2,11 +2,11 @@
 <view class="container">
   <view class="project_info">
     <view class="project">
-      <image src="{{project.url}}"></image>
+      <image src="../image/gym.jpg"></image>
       <view>
-        <text style="padding-top:0">{{project.name}}\n</text>
-        <text style="font-size:20rpx;">活动时间:{{project.time}}\n</text>
-        <text style="font-size:25rpx">地点:{{project.location}}\n</text>
+        <text style="padding-top:0">{{project[0].eventName}}\n</text>
+        <text style="font-size:20rpx;">活动时间:{{project[0].startTime}}\n</text>
+        <text style="font-size:25rpx">地点:{{project[0].location}}\n</text>
       </view>
     </view>
     <view class="line" />

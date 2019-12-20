@@ -12,12 +12,8 @@ Page({
     interval: 5000,
     duration: 1000,
     circular: true,
-    project: {
-      url: '../image/gym.jpg',
-      name: '健身馆流汗',
-      time: '2019.12.12',
-      location: '南京大学体育馆'
-    },
+    project: [],
+    url:'../gym.jpg',
     mention: {
       info: "请大家自备换洗衣服、饮料等。适当锻炼、切勿盲目锻炼。安全第一！注意爱惜器材！",
       person: "李蕊"
@@ -61,7 +57,6 @@ Page({
    * 生命周期函数--监听页面加载
    */
   onLoad: function(options) {
-    console.log(options)
     var that = this
     wx.setNavigationBarTitle({
       title: '活动详情',
@@ -82,7 +77,19 @@ Page({
    * 生命周期函数--监听页面显示
    */
   onShow: function() {
-
+    var eid = this.data.eid
+    var that = this
+    console.log(eid)
+    wx.request({
+      url: 'http://118.178.18.181:58015/activity/findInfoByEid/' + eid,
+      method: "GET",
+      success: function (res) {
+        console.log(res.data)
+        that.setData({
+          project: res.data
+        })
+      }
+    })
   },
 
   /**
