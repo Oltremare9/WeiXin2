@@ -1,9 +1,12 @@
 {
   "pages": [
+    
     "pages/Login/Login",
+    "pages/ConcreteProject/ConcreteProject",
+    
     "pages/index/index",
     "pages/foot/foot",
-    "pages/ConcreteProject/ConcreteProject",
+    "pages/allMembers/allmembers",
     "pages/ConcreteActivity/ConcreteActivity",
     "pages/add/add",
     "pages/mine/mine",

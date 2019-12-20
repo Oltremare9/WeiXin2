@@ -19,22 +19,28 @@ Page({
       person: "李蕊"
     },
     members: [{
-      url: '../image/basketball.png',
+      url: '../image/pic_1.png',
       id: ''
     }, {
-      url: '../image/basketball.png',
+      url: '../image/pic_2.png',
       id: ''
     }, {
-      url: '../image/basketball.png',
+      url: '../image/pic_3.png',
       id: ''
     }, {
-      url: '../image/basketball.png',
+      url: '../image/pic_4.png',
       id: ''
     }, {
       url: '../image/add2.png'
     }]
   },
 
+  findAllMembers:function(e){
+    var eid=this.data.eid
+    wx.navigateTo({
+      url: '../allMembers/allmembers?eid='+eid,
+    })
+  },
 
   join: function() {
     var pid = wx.getStorageSync('pid')

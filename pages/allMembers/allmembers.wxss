@@ -1,0 +1,12 @@
+/* pages/allMembers/allmembers.wxss */
+.member{
+  margin-top: 10rpx;
+  margin-bottom: 10rpx;
+  width:100%;
+  display: flex;
+  align-items: center;
+}
+.member image{
+  width: 4em;
+  height: 4em;
+}

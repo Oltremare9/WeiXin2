@@ -1,0 +1,11 @@
+<!--pages/allMembers/allmembers.wxml-->
+<view class="container">
+  <view class="members">
+  <block wx:for=" {{members}} " wx:key='' wx:if="{{index<members.length}}">
+    <view class="member ">
+      <image class="pic " src="../image/pic_1.png"></image>
+      <text>{{members[index].personName}}</text>
+    </view>
+  </block>
+  </view>
+</view>
