@@ -15,10 +15,10 @@ Page({
     circular: true
   },
   toConcrete: function(e) {
-    var id = e.target.id
-    console.log(id);
+    var eid = e.currentTarget.dataset.id
+    console.log(eid);
     wx.navigateTo({
-      url: '../ConcreteActivity/ConcreteActivity?id=' + id,
+      url: '../ConcreteActivity/ConcreteActivity?eid=' + eid,
     })
   },
   /**

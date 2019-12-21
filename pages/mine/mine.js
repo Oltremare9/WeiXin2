@@ -7,7 +7,11 @@ Page({
     name:'未登录',
     times:0
   },
-
+  goout:function(e){
+    wx.navigateTo({
+      url: '../login/login'
+    })
+  },
   /**
    * 生命周期函数--监听页面加载
    */

@@ -24,9 +24,9 @@
     <view class="line">设置</view>
     <image class="arrow2" src="/images/jiantou-3.png"></image>
   </view>
-   <view class="set-section" style="box-shadow:0px 0px 1px 1px #d9d7d4;">
-    <image class="image" src="/images/icon_logout.png"></image>
-    <view class="line">退出登录</view>
+   <view class="set-section" style="box-shadow:0px 0px 1px 1px #d9d7d4;" >
+    <image class="image" src="/images/icon_logout.png" bindtap="goout"></image>
+    <view class="line" >退出登录</view>
   </view>
   
 </view>

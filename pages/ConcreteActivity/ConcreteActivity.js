@@ -5,6 +5,7 @@ Page({
    * 页面的初始数据
    */
   data: {
+    evaluation:'',
     imgUrls: ['../image/1.jpg', '../image/2.jpg', '../image/3.jpg'],
     indicatorDots: true,
     autoplay: true,
@@ -45,16 +46,54 @@ Page({
         content: '太棒了，下次一定再来'
       }
     ]
+    
   },
-
+  findAllMembers: function (e) {
+    var eid = this.data.eid
+    wx.navigateTo({
+      url: '../allMembers/allmembers?eid=' + eid,
+    })
+  },
+  bindNameChange: function (e) {
+    console.log('评论发生改变')
+    console.log(e.detail.value)
+    this.setData({
+      evaluation: e.detail.value
+    })
+  },
+  giveComment: function () {
+    var that=this
+    var pid = wx.getStorageSync('pid')
+    var eid = this.data.eid
+    var evaluation=this.data.evaluation
+    wx.request({
+      url: 'http://118.178.18.181:58015/activity/insertEvaluation/' + pid + '/' + eid +'/'+evaluation,
+      method: 'GET',
+      success: function (res) {
+        var resFlag = res.data
+        if (resFlag == 1) {
+          console.log("评论成功")
+          wx.navigateTo({
+            url: '../ConcreteActivity/ConcreteActivity?eid=' + eid,
+          })
+        }
+        else {
+          console.log("评论失败")
+        }
+      }
+    })
+  },
   /**
    * 生命周期函数--监听页面加载
    */
   onLoad: function (options) {
+    var that = this
     wx.setNavigationBarTitle({
       title: '历史活动',
     })
-    console.log(options)
+    that.setData({
+      eid: options.eid
+    })
   },
 
   /**
@@ -68,7 +107,19 @@ Page({
    * 生命周期函数--监听页面显示
    */
   onShow: function () {
-
+    var eid = this.data.eid
+    var that = this
+    console.log(eid)
+    wx.request({
+      url: 'http://118.178.18.181:58015/activity/findInfoByEid/' + eid,
+      method: "GET",
+      success: function (res) {
+        console.log(res.data)
+        that.setData({
+          project: res.data
+        })
+      }
+    })
   },
 
   /**

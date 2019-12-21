@@ -122,8 +122,8 @@
   justify-content: center;
   border: 4rpx solid whitesmoke;
     position: fixed;
-    bottom: 30rpx;
-    width: 80%;
+    bottom: 50rpx;
+    width: 90%;
 }
 .bottom{
   background-color: #f7ab3e;

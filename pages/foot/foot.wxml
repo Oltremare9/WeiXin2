@@ -14,7 +14,7 @@
   </view>
   <view class="projects_container">
     <block wx:for="{{projects}}" wx:key="">
-      <view class="project" bindtap="toConcrete" id="{{index}}">
+      <view class="project" bindtap="toConcrete" data-id="{{item.eid}}">
         <view wx:if="{{item.type=='篮球'}}">
           <image src="../image/basketball.png"></image>
         </view>
@@ -25,11 +25,10 @@
           <image src="../image/cheese.png"></image>
         </view>
         <view>
-          <text style="padding-top:0">{{projects[index].eventName}}\n</text>
+           <text style="padding-top:0">{{projects[index].eventName}}\n</text>
           <text style="font-size:25rpx">{{projects[index].type}}\n</text>
-          <text style="font-size:25rpx">地点:{{projects[index].location}}</text>
-          <text style="font-size:30rpx;" decode="{{true}}">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;{{projects[index].state}}\n</text>
-          <text style="font-size:20rpx;">活动时间:{{projects[index].startTime}}</text>
+          <text style="font-size:25rpx">地点:{{projects[index].location}}\n</text>
+          <text style="font-size:20rpx;">活动时间:{{projects[index].startTime}}{{projects[index].remark}}</text>
           
         </view>
       </view>
