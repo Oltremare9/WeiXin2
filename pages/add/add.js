@@ -85,10 +85,11 @@ Page({
     var type = this.data.index2
     var size = this.data.index1
     var name=this.data.name
+    var location=this.data.location
     var remark = this.data.time + ',活动时长' + this.data.index3+'小时'
     console.log(name, location, start_time, type, size, remark, organizer)
     wx.request({
-      url: '',
+      url: 'http://118.178.18.181:58015/event/insertEvent',
       data: {
         name, location,start_time,type,size,remark,organizer
       },
@@ -98,11 +99,14 @@ Page({
       },
       success: function(res) {
         console.log("返回发送成功的数据:" + res.data) 
+        wx.reLaunch({
+          url: '../index/index'
+        })
       },
       fail: function(res) {
         console.log('error')
       },
-      complete: function(res) {
+      complete: function(res) { 
         console.log('complete')
       },
     })
